@@ -1,0 +1,63 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Form and table
+  link(rel='stylesheet' href='/styles.css')
+.form-page
+  .grid-container
+    .side(style='grid-area: box-1; background-color: white;')
+      div
+    
+      div(style='border-left: 2px solid rgba(219, 26, 26, 0.31)')
+        h2 
+        p 
+    .item(style='grid-area: box-2; text-align: center; background-color: white;')
+      h2(style='color: green;')
+      p new video(src="video Upload") 
+    .item(style='grid-area: box-3; text-align: center; background-color: white;')
+      h2(style='color: red;') 5
+      p Out of stock
+    .item.the-form(style='grid-area: box-4; background-color: white;')
+      h2(style='margin: 0;') Add Video 
+      div 
+        input(type='text' name='name' placeholder='Product Name' form='add-form' class="input" id="name")
+        span#message1.error(style='display:none;') Invalid field
+      div 
+        input(type='text' name='category' placeholder='Category' form='add-form' class="input" id="category")
+        span#message2.error(style='display:none;') Invalid field
+      div
+        input(type='number' name='price' placeholder='Price' form='add-form' class="input" id="price")
+        span#message3.error(style='display:none;') Invalid field
+      div
+        input(type='number' name='quantity' placeholder='Quantity' form='add-form' class="input" id="quantity")
+        span#message4.error(style='display:none;') Invalid field
+      .inner
+          input(type='text' name='color' placeholder='Color' style='width: 100%;' form='add-form' class="input" id="color")
+          span#message5.error(style='display:none;') Invalid field
+          input(type='text' form='add-form' style='width: 100%;' placeholder="Upload Image" class="input" id="image")
+          span#message6.error(style='display:none;') Invalid field
+      .inner
+          form#add-form(method='post' action='/form' style='width: 100%;')
+              button(type='submit' style='color: white; background-color: rgb(255, 128, 0); width: 100%;') SAVE
+          form(method='post' action='/delete' style='width: 100%;')
+              button(type='submit' style='color: black; background-color: rgba(157, 157, 157, 0.796); width: 100%;') CLEAR
+    .table1(style='grid-area: box-5; background-color: white;')
+      table
+        thead
+          tr
+            th ID
+            th NAME
+            th QUALITY
+            th DATE 
+            th VIDEO THUMBNAIL 
+        tbody
+          each upload in uploaded 
+            tr
+              td #{upload.ID}
+              td #{upload.name}
+              td #{upload.quality}
+              td #{upload.date}
+              td #{upload.thumbnail}
+script(src="/validation.js") 
+          
